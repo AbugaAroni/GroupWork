@@ -31,15 +31,32 @@ var p8 = new Products("Generosity",  8, 200, "Generosity water generous for trai
 var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 
 
-
 //user interface logic
 $(document).ready(function() {
+
+
+
 
   allproducts.productID.forEach(function(product) {
      console.log(product.pName);
      console.log(product.price);
      console.log(product.sdescription);
-   });
 
+     $(#productsdisplay).html('<div class="column">' +
+              '<div class="card" style="width: 18rem;">'+
+                     '<img class="card-img-top" src='+ product.picture + 'alt="Card image cap">'+
+                     '<div class="card-body">' +
+                         '<h5 class="card-title">Diamond Water</h5>' +
+                         '<p>ksh 200</p>' +
+                         '<p class="card-text">Smooth freshening water that cools your thirst.</p>'
+                     '</div>' +
+                     '<div class="card-footer">' +
+                        '<a href="#" class="btn btn-primary">Select</a>'+
+                     '</div>'+
+                 '</div>'+
+             '</div>'
+      );
 
     });
+
+});
