@@ -64,7 +64,6 @@ $(document).ready(function() {
                      '</div>' +
                      '<div class="card-footer">' +
                         '<a href="#" id="'+ product.pID +'-btn"  class="btn btn-primary">Select</a>'+
-                        '<a href="#" id="'+ product.pID +'-btn-cart"  class="btn btn-primary">Add to cart</a>'+
                      '</div>'+
                  '</div>'+
              '</div>'
@@ -134,6 +133,7 @@ $(document).ready(function() {
               				 '	<div class="details col-md-6">'+
               					 '	<h3 class="product-title">'+p1.pName+'</h3>'+
                        '  </div>'+
+                         '<p class="product-code"> Product code: ' + p1.pID + '</p>'+
               					 '<p class="product-description">' + p1.description + '</p>'+
               					 '	<h4 class="price">current price: <span>ksh '+ p1.price + '</span></h4>'+
               '	<div class="action">'+
@@ -165,6 +165,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p2.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p2.pID + '</p>'+
                    '<p class="product-description">' + p2.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p2.price + '</span></h4>'+
         '	<div class="action">'+
@@ -196,6 +197,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p3.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p3.pID + '</p>'+
                    '<p class="product-description">' + p3.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p3.price + '</span></h4>'+
         '	<div class="action">'+
@@ -227,6 +229,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p4.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p4.pID + '</p>'+
                    '<p class="product-description">' + p4.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p4.price + '</span></h4>'+
         '	<div class="action">'+
@@ -257,6 +260,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p5.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p5.pID + '</p>'+
                    '<p class="product-description">' + p5.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p5.price + '</span></h4>'+
         '	<div class="action">'+
@@ -288,6 +292,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p6.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p6.pID + '</p>'+
                    '<p class="product-description">' + p6.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p6.price + '</span></h4>'+
         '	<div class="action">'+
@@ -319,6 +324,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p7.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p7.pID + '</p>'+
                    '<p class="product-description">' + p7.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p7.price + '</span></h4>'+
         '	<div class="action">'+
@@ -350,6 +356,7 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p8.pName+'</h3>'+
                  '  </div>'+
+                 '<p class="product-code"> Product code: ' + p8.pID + '</p>'+
                    '<p class="product-description">' + p8.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p8.price + '</span></h4>'+
         '	<div class="action">'+
