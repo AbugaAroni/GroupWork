@@ -113,11 +113,24 @@ border: none;
 } 
 .btn-order { 
      
-    display: block; 
+     
     margin: 200px auto 200px auto ; 
     font-size: 1.75em; 
     border-radius: .; 
 } 
+.btn-danger {
+    
+    margin: 200px auto 200px auto ; 
+    font-size: 1.75em; 
+    border-radius: .; 
+    color: white; 
+    background-color: #56CCF2;
+     border: none;
+      border-radius: .; 
+      font-weight: bold;
+}
+
+
 .btn-primary {
     color: white; 
     background-color: #56CCF2;
@@ -125,6 +138,13 @@ border: none;
       border-radius: .; 
       font-weight: bold;
        }
+       buttons {
+        width: 960px;
+        margin: 0 auto;}
+        
+            .action_btn {
+        width: 300px;
+        margin: 0 auto;}
 .main-footer { 
     background-color: #56CCF2;
      text-align: center;
@@ -145,8 +165,3 @@ border: none;
    h3 {
        text-align: center;
    }      
-
-    
-    
-    
-    
