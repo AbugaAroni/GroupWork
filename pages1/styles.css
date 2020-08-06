@@ -118,19 +118,6 @@ border: none;
     font-size: 1.75em; 
     border-radius: .; 
 } 
-.btn-danger {
-    
-    margin: 200px auto 200px auto ; 
-    font-size: 1.75em; 
-    border-radius: .; 
-    color: white; 
-    background-color: #56CCF2;
-     border: none;
-      border-radius: .; 
-      font-weight: bold;
-}
-
-
 .btn-primary {
     color: white; 
     background-color: #56CCF2;
@@ -138,7 +125,18 @@ border: none;
       border-radius: .; 
       font-weight: bold;
        }
-       buttons {
+
+       .btn-danger {
+        margin: 200px auto 200px auto ; 
+        font-size: 1.75em; 
+        border-radius: .;
+        color: white; 
+        background-color: #56CCF2;
+         border: none;
+          border-radius: .; 
+          font-weight: bold;
+       }
+       .buttons {
         width: 960px;
         margin: 0 auto;}
         
@@ -165,3 +163,8 @@ border: none;
    h3 {
        text-align: center;
    }      
+
+    
+    
+    
+    
