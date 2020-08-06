@@ -401,15 +401,15 @@ $(document).ready(function() {
               });
          }
 
-        var productNumbers =0;
-        productNumbers  = parseInt(localStorage.getItem('cartNumbers'));
-        console.log(productNumbers);
-        if(isNaN(productNumbers) === true) {
-              document.querySelector('.shoppingc').textContent = "Shopping cart";
-                }
-          else {
-        document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
+      //onload, check if there are any items in the basket
+      function onLoadCartNumbers() {
+        let productNumbers = localStorage.getItem('cartNumbers');
+        if(productNumbers) {
+        document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
               }
+            }
+      //calls the function to check if stuff is in basket 
+        onLoadCartNumbers();
 
          //store data of product in local variable for use later
          function cartNumbers(){
@@ -420,14 +420,14 @@ $(document).ready(function() {
               localStorage.setItem('cartNumbers', productNumbers + 1);
               productNumbers  = localStorage.getItem('cartNumbers');
               productNumbers = parseInt(productNumbers);
-              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
+              document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
             }
             else {
               localStorage.setItem('cartNumbers', 1);
 
               productNumbers  = localStorage.getItem('cartNumbers');
               productNumbers = parseInt(productNumbers);
-              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
+              document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
             }
          }
 
