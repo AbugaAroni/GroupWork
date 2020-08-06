@@ -1,5 +1,4 @@
 //Business interface logic
-
 var allorders = {productID: []};
 
 //products and product objects
@@ -40,37 +39,45 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 }
 
 //shopping cart
-function ShoppingCart (productID, prodName, tprice, inCart, numordered) {
+function ShoppingCart (productID, prodName, tprice, inCart, numordered, img) {
   this.prodID = productID;
   this.prodName = prodName;
   this.price = tprice;
   this.inCart = inCart;
   this.totalordered = numordered;
+  this.img = img;
 }
 
 //shopping cart objects
 {
-var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0, 0);
+var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0, 0, p1.picture);
 
-var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0, 0);
+var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0, 0, p2.picture);
 
-var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0, 0);
+var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0, 0, p3.picture);
 
-var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0, 0);
+var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0, 0, p4.picture);
 
-var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0, 0);
+var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0, 0, p5.picture);
 
-var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0, 0);
+var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0, 0, p6.picture);
 
-var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0, 0);
+var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0, 0, p7.picture);
 
-var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0, 0);
+var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0, 0, p8.picture);
 
 var allshoppinggoods = {productID: [sp1,sp2,sp3,sp4,sp5,sp6,sp7,sp8]}
 }
 
 //user interface logic
 $(document).ready(function() {
+  //loads every time page loads to load the html stuff
+  displayCart();
+
+  //calls the function to check if stuff is in basket
+    onLoadCartNumbers();
+
+
 
 //for each loop to display each product
    allproducts.productID.forEach(function(product) {
@@ -446,6 +453,8 @@ $(document).ready(function() {
             });
               });
 
+
+
       //onload, check if there are any items in the basket
       function onLoadCartNumbers() {
         let productNumbers = localStorage.getItem('cartNumbers');
@@ -453,8 +462,7 @@ $(document).ready(function() {
         document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
               }
             }
-      //calls the function to check if stuff is in basket
-        onLoadCartNumbers();
+
 
          //store data of product in local variable for use later
          function cartNumbers(product){
@@ -474,10 +482,11 @@ $(document).ready(function() {
               productNumbers = parseInt(productNumbers);
               document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
             }
-          setItems(product);
+        setItems(product);
 
          }
 
+    //code to set items into the cart using localStorage
          function setItems(product) {
 
           let cartItems = localStorage.getItem('productsInCart');
@@ -503,7 +512,8 @@ $(document).ready(function() {
             localStorage.setItem("productsInCart", JSON.stringify(cartItems));
          }
 
-        function totalCost(product) {
+    //code to find the total cost of the items using localStorage
+         function totalCost(product) {
           let cartCost = localStorage.getItem('totalCost');
           console.log("My cart cost is", cartCost);
           console.log(typeof cartCost);
@@ -517,5 +527,57 @@ $(document).ready(function() {
           }
           }
 
+      //code to display the cart
+          function displayCart() {
+            let cartItems = localStorage.getItem("productsInCart");
+            cartItems = JSON.parse(cartItems);
+          let productContainer = document.querySelector(".products");
+          let cartCost = localStorage.getItem('totalCost');
 
-});
+            if(cartItems && productContainer) {
+              productContainer.innerHTML ='';
+            Object.values(cartItems).map(item => {
+              productContainer.innerHTML +=`
+            <div class="row cartp">
+                <div class="product-id brdrs col-md-2">
+                   <span> ${item.prodID}</span>
+                </div>
+                <div class="product brdrs col-md-2">
+                   <span> ${item.prodName}  </span>
+                   <ion-icon name="close-circle-outline"></ion-icon>
+                </div>
+                <div class="price brdrs col-md-2">
+                  ${item.price}<span>.00 KSH </span>
+                </div>
+                <div class="quanitity brdrs col-md-2">
+                  <ion-icon name="arrow-back-outline"></ion-icon>
+                  <span>${item.inCart}</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                  </div>
+                <div class="total brdrs col-md-2">
+
+                ${item.inCart * item.price}
+
+                  </div>
+              </div>
+              `;
+            });
+
+            productContainer.innerHTML += `
+            <div class="row pdx cartp">
+              <div class="basketTotalContainer col-md-6">
+                <h3 class="basketTotalTitle">
+                </h3>
+              </div>
+              <div = class="xyz col-md-6">
+              <h3>  Basket Total:
+                  ${cartCost}.KSH
+                </h3>
+              </div>
+            </div>
+            `;
+                }
+
+      }
+
+      });
