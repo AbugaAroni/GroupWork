@@ -40,33 +40,33 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 }
 
 //shopping cart
-function ShoppingCart (productID, name, tprice, numordered) {
+function ShoppingCart (productID, name, tprice, inCart, numordered) {
   this.prodID = productID;
   this.prodName = name
   this.price = tprice;
+  this.incart = inCart;
   this.totalordered = numordered;
 }
 
 //shopping cart objects
 {
-var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0);
+var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0, 0);
 
-var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0);
+var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0, 0);
 
-var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0);
+var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0, 0);
 
-var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0);
+var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0, 0);
 
-var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0);
+var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0, 0);
 
-var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0);
+var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0, 0);
 
-var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0);
+var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0, 0);
 
-var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0);
+var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0, 0);
 }
 
-console.log(sp1);
 //user interface logic
 $(document).ready(function() {
 
@@ -396,19 +396,40 @@ $(document).ready(function() {
 
          for (var i=0; i < carts.length; i++) {
               carts[i].addEventListener('click', () => {
-                console.log("poo");
-                cartsNumbers();
+                console.log("cart selection button working");
+                cartNumbers();
               });
          }
 
+        var productNumbers =0;
+        productNumbers  = parseInt(localStorage.getItem('cartNumbers'));
+        console.log(productNumbers);
+        if(isNaN(productNumbers) === true) {
+              document.querySelector('.shoppingc').textContent = "Shopping cart";
+                }
+          else {
+        document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)1";
+              }
+
          //store data of product in local variable for use later
-         function cartNumbers() {
-           let productnumbers = localStorage.getItem('cartNumbers');
+         function cartNumbers(){
+           productNumbers  = localStorage.getItem('cartNumbers');
+           productNumbers = parseInt(productNumbers);
 
-           productNumbers = parseInt(prodctNumbers);
+           if (productNumbers>=1) {
+              localStorage.setItem('cartNumbers', productNumbers + 1);
+              productNumbers  = localStorage.getItem('cartNumbers');
+              productNumbers = parseInt(productNumbers);
+              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)2";
+            }
+            else {
+              localStorage.setItem('cartNumbers', 1);
 
-           localStorage.setItem('cartNumbers', 1);
-
+              productNumbers  = localStorage.getItem('cartNumbers');
+              productNumbers = parseInt(productNumbers);
+              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)3";
+            }
          }
+
 
 });
