@@ -64,6 +64,7 @@ $(document).ready(function() {
                      '</div>' +
                      '<div class="card-footer">' +
                         '<a href="#" id="'+ product.pID +'-btn"  class="btn btn-primary">Select</a>'+
+                        '<a href="#" id="'+ product.pID +'-btn-cart"  class="btn btn-primary">Add to cart</a>'+
                      '</div>'+
                  '</div>'+
              '</div>'
@@ -72,6 +73,7 @@ $(document).ready(function() {
     });
 
 //click listeners for all the buttons
+{
   $("#p1-btn").click( function(event) {
        event.preventDefault();
        window.name="p1";
@@ -113,126 +115,253 @@ $(document).ready(function() {
           window.name="p8";
           location.href='productdetailspage.html';
                   });
-
+}
 //will display given product name
     if(window.name==="p1") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p1.Name +'-'+ p1.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p1.picture + '"alt="Card image '+ p1.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p1.pName + '</h5>' +
-                              '<p>'+ p1.price + ' ksh</p>' +
-                              '<p class="card-text">' + p1.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+                  '<h1>' + p1.pName + ' details</h1>' +
+              	              '<div class="container">' +
+                              '<div class="card">' +
+              		            '<div class="container-fliud">' +
+              			         '<div class="wrapper row">' +
+              				       '<div class="preview col-md-6">' +
+              					              '<div class="preview-pic tab-content">' +
+              					                      '<div class="tab-pane active" id="pic '+ p1.pName +'"><img "alt="Card image '+ p1.pName + '" src="'+ p1.picture + '" /></div>'+
+              					                         ' </div> ' +
+                        						   '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                               '	</ul>'+
+              					      '</div>'+
+              				 '	<div class="details col-md-6">'+
+              					 '	<h3 class="product-title">'+p1.pName+'</h3>'+
+                       '  </div>'+
+              					 '<p class="product-description">' + p1.description + '</p>'+
+              					 '	<h4 class="price">current price: <span>ksh '+ p1.price + '</span></h4>'+
+              '	<div class="action">'+
+                '  <br>'+
+              						'	<button class="add-to-cart btn btn-default" id="#'+ p1.pName +'-'+ p1.pID +'" type="button">add to cart</button>'+
+              						'	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+              					'	</div>'+
+              			'		</div>'+
+              			'	</div>'+
+              		'	</div>'+
+              	'	</div>'+
+              '	</div>>'
                 );
               }
         else if(window.name==="p2") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p2.pName +'-'+ p2.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p2.picture + '"alt="Card image '+ p2.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p2.pName + '</h5>' +
-                              '<p>'+ p2.price + ' ksh</p>' +
-                              '<p class="card-text">' + p2.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p2.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p2.pName +'"><img "alt="Card image '+ p2.pName + '" src="'+ p2.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p2.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p2.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p2.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p2.pName +'-'+ p2.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p3") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p3.pName +'-'+ p3.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p3.picture + '"alt="Card image '+ p3.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p3.pName + '</h5>' +
-                              '<p>'+ p3.price + ' ksh</p>' +
-                              '<p class="card-text">' + p3.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p3.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p3.pName +'"><img "alt="Card image '+ p3.pName + '" src="'+ p3.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p3.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p3.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p3.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p3.pName +'-'+ p3.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p4") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p4.pName +'-'+ p4.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p4.picture + '"alt="Card image '+ p4.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p4.pName + '</h5>' +
-                              '<p>'+ p4.price + ' ksh</p>' +
-                              '<p class="card-text">' + p4.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p4.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p4.pName +'"><img "alt="Card image '+ p4.pName + '" src="'+ p4.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p4.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p4.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p4.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p4.pName +'-'+ p4.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p5") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p5.pName +'-'+ p5.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p5.picture + '"alt="Card image '+ p5.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p5.pName + '</h5>' +
-                              '<p>'+ p5.price + ' ksh</p>' +
-                              '<p class="card-text">' + p5.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(  '<h1>' + p5.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p5.pName +'"><img "alt="Card image '+ p5.pName + '" src="'+ p5.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p5.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p5.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p5.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p5.pName +'-'+ p5.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p6") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p6.pName +'-'+ p6.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p6.picture + '"alt="Card image '+ p6.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p6.pName + '</h5>' +
-                              '<p>'+ p6.price + ' ksh</p>' +
-                              '<p class="card-text">' + p6.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p6.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p6.pName +'"><img "alt="Card image '+ p6.pName + '" src="'+ p1.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p6.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p6.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p6.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p6.pName +'-'+ p6.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p7") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p7.pName +'-'+ p7.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p7.picture + '"alt="Card image '+ p7.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p7.pName + '</h5>' +
-                              '<p>'+ p7.price + ' ksh</p>' +
-                              '<p class="card-text">' + p7.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p7.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p7.pName +'"><img "alt="Card image '+ p7.pName + '" src="'+ p7.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p7.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p7.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p7.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p7.pName +'-'+ p7.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
         else if(window.name==="p8") {
-          $("#productsdetails").append('<div class="column">' +
-                   '<div class="card" id="#'+ p8.pName +'-'+ p8.pID +'" style="width: 18rem;">'+
-                          '<img class="card-img-top" src="'+ p8.picture + '"alt="Card image '+ p8.pName + '">'+
-                          '<div class="card-body">' +
-                              '<h5 class="card-title">'+ p8.pName + '</h5>' +
-                              '<p>'+ p8.price + ' ksh</p>' +
-                              '<p class="card-text">' + p8.description + '</p>'+
-                          '</div>' +
-                          '<div class="card-footer">' +
-                          '</div>'+
-                      '</div>'+
-                  '</div>'
+          $("#productsdetails").append(
+            '<h1>' + p8.pName + ' details</h1>' +
+                        '<div class="container">' +
+                        '<div class="card">' +
+                        '<div class="container-fliud">' +
+                       '<div class="wrapper row">' +
+                       '<div class="preview col-md-6">' +
+                                '<div class="preview-pic tab-content">' +
+                                        '<div class="tab-pane active" id="pic '+ p8.pName +'"><img "alt="Card image '+ p8.pName + '" src="'+ p8.picture + '" /></div>'+
+                                           ' </div> ' +
+                                 '  <ul class="preview-thumbnail nav nav-tabs"> '+
+                         '	</ul>'+
+                        '</div>'+
+                 '	<div class="details col-md-6">'+
+                   '	<h3 class="product-title">'+p8.pName+'</h3>'+
+                 '  </div>'+
+                   '<p class="product-description">' + p8.description + '</p>'+
+                   '	<h4 class="price">current price: <span>ksh '+ p8.price + '</span></h4>'+
+        '	<div class="action">'+
+          '  <br>'+
+                    '	<button class="add-to-cart btn btn-default" id="#'+ p8.pName +'-'+ p8.pID +'" type="button">add to cart</button>'+
+                    '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
+                  '	</div>'+
+              '		</div>'+
+              '	</div>'+
+            '	</div>'+
+          '	</div>'+
+        '	</div>>'
                 );
         }
 
