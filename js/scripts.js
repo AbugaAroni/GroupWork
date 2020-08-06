@@ -396,7 +396,7 @@ $(document).ready(function() {
 
          for (var i=0; i < carts.length; i++) {
               carts[i].addEventListener('click', () => {
-                console.log("cart selection button working");
+                alert("Product added to basket!")
                 cartNumbers();
               });
          }
@@ -408,7 +408,7 @@ $(document).ready(function() {
               document.querySelector('.shoppingc').textContent = "Shopping cart";
                 }
           else {
-        document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)1";
+        document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
               }
 
          //store data of product in local variable for use later
@@ -420,14 +420,14 @@ $(document).ready(function() {
               localStorage.setItem('cartNumbers', productNumbers + 1);
               productNumbers  = localStorage.getItem('cartNumbers');
               productNumbers = parseInt(productNumbers);
-              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)2";
+              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
             }
             else {
               localStorage.setItem('cartNumbers', 1);
 
               productNumbers  = localStorage.getItem('cartNumbers');
               productNumbers = parseInt(productNumbers);
-              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)3";
+              document.querySelector('.shoppingc').textContent = "Shopping cart, " + productNumbers + " item(s)";
             }
          }
 
