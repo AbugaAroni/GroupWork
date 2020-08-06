@@ -305,7 +305,7 @@ $(document).ready(function() {
                        '<div class="wrapper row">' +
                        '<div class="preview col-md-6">' +
                                 '<div class="preview-pic tab-content">' +
-                                        '<div class="tab-pane active" id="pic '+ p6.pName +'"><img "alt="Card image '+ p6.pName + '" src="'+ p1.picture + '" /></div>'+
+                                        '<div class="tab-pane active" id="pic '+ p6.pName +'"><img "alt="Card image '+ p6.pName + '" src="'+ p6.picture + '" /></div>'+
                                            ' </div> ' +
                                  '  <ul class="preview-thumbnail nav nav-tabs"> '+
                          '	</ul>'+
@@ -485,6 +485,14 @@ $(document).ready(function() {
           cartItems = JSON.parse(cartItems);
 
           if(cartItems != null ) {
+
+            if(cartItems[product.prodName] == undefined){
+              cartItems = {
+                ...cartItems,
+                [product.prodName]: product
+              }
+            }
+
               cartItems[product.prodName].inCart += 1;
             }
              else {
