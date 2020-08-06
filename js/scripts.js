@@ -1,10 +1,4 @@
 //Business interface logic
-//shopping cart
-function ShoppingCart (productID, name, tprice, numordered) {
-  this.prodID = productID;
-  this.totalprice = tprice;
-  this.totalordered = numordered;
-}
 
 var allorders = {productID: []};
 
@@ -18,6 +12,7 @@ function Products (prodname, pid, cost, shortdescription,longdescription,pic,num
   this.description = longdescription;
   this.picture = pic;
   this.quantity = numProducts;
+          }
 
 }
 
@@ -44,9 +39,36 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 
 }
 
+//shopping cart
+function ShoppingCart (productID, name, tprice, numordered) {
+  this.prodID = productID;
+  this.prodName = name
+  this.price = tprice;
+  this.totalordered = numordered;
+}
+
+//shopping cart objects
+{
+var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0);
+
+var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0);
+
+var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0);
+
+var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0);
+
+var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0);
+
+var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0);
+
+var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0);
+
+var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0);
+}
+
+console.log(sp1);
 //user interface logic
 $(document).ready(function() {
-
 
 //for each loop to display each product
    allproducts.productID.forEach(function(product) {
