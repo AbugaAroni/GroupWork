@@ -1,7 +1,7 @@
 //Business interface logic
 //shopping cart
 function ShoppingCart (productID, name, tprice, numordered) {
-  this.orders = allorders;
+  this.prodID = productID;
   this.totalprice = tprice;
   this.totalordered = numordered;
 }
@@ -22,7 +22,7 @@ function Products (prodname, pid, cost, shortdescription,longdescription,pic,num
 }
 
 //Product objects
-
+{
 var p1 = new Products("Diamond water", "p1", 200, "Smooth freshening water that cools your thirst.", "Smooth freshening water that cools your thirst. Made from water that is said to have fallen from the heavens","../img/img1.jpg", 10);
 
 var p2 = new Products("Vilsa Water", "p2", 250, "Water from the Vilsa hills...", "From the hills of Vilsa, filtered by the hills and nature itself","../img/img2.jpg", 10);
@@ -44,9 +44,6 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 
 }
 
-//var to capture which product user wants to viewp
-var iWanttoview =window.name;
-
 //user interface logic
 $(document).ready(function() {
 
@@ -63,7 +60,7 @@ $(document).ready(function() {
                          '<p class="card-text">' + product.sdescription + '</p>'+
                      '</div>' +
                      '<div class="card-footer">' +
-                        '<a href="#" id="'+ product.pID +'-btn"  class="btn btn-primary">Select</a>'+
+                        '<a href="#" id="'+ product.pID +'-btn"  class="btn testf btn-primary">Select</a>'+
                      '</div>'+
                  '</div>'+
              '</div>'
@@ -116,7 +113,7 @@ $(document).ready(function() {
                   });
 }
 //will display given product name
-    if(window.name==="p1") {
+   if(window.name==="p1") {
           $("#productsdetails").append(
                   '<h1>' + p1.pName + ' details</h1>' +
               	              '<div class="container">' +
@@ -138,14 +135,14 @@ $(document).ready(function() {
               					 '	<h4 class="price">current price: <span>ksh '+ p1.price + '</span></h4>'+
               '	<div class="action">'+
                 '  <br>'+
-              						'	<button class="add-to-cart btn btn-default" id="#'+ p1.pName +'-'+ p1.pID +'" type="button">add to cart</button>'+
+              						'	<button class="add-to-cart scart btn btn-default" id="#'+ p1.pName +'-'+ p1.pID +'" type="button">add to cart</button>'+
               						'	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
               					'	</div>'+
               			'		</div>'+
               			'	</div>'+
               		'	</div>'+
               	'	</div>'+
-              '	</div>>'
+              '	</div>'
                 );
               }
         else if(window.name==="p2") {
@@ -170,14 +167,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p2.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p2.pName +'-'+ p2.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p2.pName +'-'+ p2.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p3") {
@@ -202,14 +199,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p3.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p3.pName +'-'+ p3.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p3.pName +'-'+ p3.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p4") {
@@ -234,14 +231,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p4.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p4.pName +'-'+ p4.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p4.pName +'-'+ p4.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p5") {
@@ -265,14 +262,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p5.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p5.pName +'-'+ p5.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p5.pName +'-'+ p5.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p6") {
@@ -297,14 +294,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p6.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p6.pName +'-'+ p6.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p6.pName +'-'+ p6.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p7") {
@@ -329,14 +326,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p7.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p7.pName +'-'+ p7.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p7.pName +'-'+ p7.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p8") {
@@ -361,15 +358,35 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p8.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p8.pName +'-'+ p8.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p8.pName +'-'+ p8.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
+
+        //get all the buttons with the class .scart
+        let carts = document.querySelectorAll('.scart');
+
+         for (var i=0; i < carts.length; i++) {
+              carts[i].addEventListener('click', () => {
+                console.log("poo");
+                cartsNumbers();
+              });
+         }
+
+         //store data of product in local variable for use later
+         function cartNumbers() {
+           let productnumbers = localStorage.getItem('cartNumbers');
+
+           productNumbers = parseInt(prodctNumbers);
+
+           localStorage.setItem('cartNumbers', 1);
+
+         }
 
 });
