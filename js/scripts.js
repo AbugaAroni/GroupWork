@@ -64,6 +64,7 @@ $(document).ready(function() {
                      '</div>' +
                      '<div class="card-footer">' +
                         '<a href="#" id="'+ product.pID +'-btn"  class="btn btn-primary">Select</a>'+
+                        '<a href="#" id="'+ product.pID +'-btn-cart"  class="btn btn-primary">Add to cart</a>'+
                      '</div>'+
                  '</div>'+
              '</div>'
