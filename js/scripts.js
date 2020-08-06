@@ -40,9 +40,9 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 }
 
 //shopping cart
-function ShoppingCart (productID, name, tprice, inCart, numordered) {
+function ShoppingCart (productID, prodName, tprice, inCart, numordered) {
   this.prodID = productID;
-  this.prodName = name
+  this.prodName = prodName;
   this.price = tprice;
   this.inCart = inCart;
   this.totalordered = numordered;
@@ -480,11 +480,22 @@ $(document).ready(function() {
          }
 
          function setItems(product) {
-            console.log("Inside of SETItems");
-            console.log("My product is ", product);
 
-            product.inCart =1;
-            console.log("My product is ", product);
+          let cartItems = localStorage.getItem('productsInCart');
+          cartItems = JSON.parse(cartItems);
+
+          if(cartItems != null ) {
+              cartItems[product.prodName].inCart += 1;
+            }
+             else {
+              product.inCart =1;
+              cartItems = {
+                [product.prodName]: product
+              }
+            }
+
+            console.log("My product is ", product.prodName);
+            localStorage.setItem("productsInCart", JSON.stringify(cartItems));
          }
 
 
