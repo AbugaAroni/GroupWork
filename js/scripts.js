@@ -397,52 +397,51 @@ $(document).ready(function() {
         let carts = document.querySelectorAll('.scart');
               carts[0].addEventListener('click', () => {
                 alert("Product added to basket!")
-              //get the ID of the object and place into the thing
+
+        //get the ID of the object and place into the thing
               var iD= document.getElementsByClassName('scart')[0].id;
-                //console log to verify name of product
-              //console.log(iD);
 
               //foreach looop function to get the correct ID
           allshoppinggoods.productID.forEach(function(sproduct) {
           if(sproduct.prodID==="p1"&& iD===sproduct.prodID)
               {
-              console.log("it works1");
               cartNumbers(sp1);
+              totalCost(sp1);
             }
             else if(sproduct.prodID==="p2"&& iD===sproduct.prodID)
                 {
-                console.log("it works2");
                 cartNumbers(sp2);
+                totalCost(sp2);
               }
               else if(sproduct.prodID==="p3"&& iD===sproduct.prodID)
                   {
-                  console.log("it works3");
                   cartNumbers(sp3);
+                  totalCost(sp3);
                 }
                 else if(sproduct.prodID==="p4"&& iD===sproduct.prodID)
                     {
-                    console.log("it works4");
                     cartNumbers(sp4);
+                    totalCost(sp4);
                   }
                   else if(sproduct.prodID==="p5"&& iD===sproduct.prodID)
                       {
-                      console.log("it works5");
                       cartNumbers(sp5);
+                      totalCost(sp5);
                     }
                     else if(sproduct.prodID==="p6"&& iD===sproduct.prodID)
                         {
-                        console.log("it works6");
                         cartNumbers(sp6);
+                        totalCost(sp6);
                       }
                       else if(sproduct.prodID==="p7"&& iD===sproduct.prodID)
                           {
-                          console.log("it works7");
                           cartNumbers(sp7);
+                          totalCost(sp7);
                         }
                         else if(sproduct.prodID==="p8"&& iD===sproduct.prodID)
                             {
-                            console.log("it works8");
                             cartNumbers(sp8);
+                            totalCost(sp8);
                           }
             });
               });
@@ -501,10 +500,22 @@ $(document).ready(function() {
                 [product.prodName]: product
               }
             }
-
-            console.log("My product is ", product.prodName);
             localStorage.setItem("productsInCart", JSON.stringify(cartItems));
          }
+
+        function totalCost(product) {
+          let cartCost = localStorage.getItem('totalCost');
+          console.log("My cart cost is", cartCost);
+          console.log(typeof cartCost);
+
+          if(cartCost!= null) {
+            cartCost = parseInt(cartCost);
+            localStorage.setItem("totalCost", cartCost + product.price);
+          }
+          else {
+            localStorage.setItem("totalCost", product.price);
+          }
+          }
 
 
 });
