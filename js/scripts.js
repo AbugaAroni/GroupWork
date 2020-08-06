@@ -44,7 +44,7 @@ function ShoppingCart (productID, name, tprice, inCart, numordered) {
   this.prodID = productID;
   this.prodName = name
   this.price = tprice;
-  this.incart = inCart;
+  this.inCart = inCart;
   this.totalordered = numordered;
 }
 
@@ -65,6 +65,8 @@ var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0, 0);
 var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0, 0);
 
 var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0, 0);
+
+var allshoppinggoods = {productID: [sp1,sp2,sp3,sp4,sp5,sp6,sp7,sp8]}
 }
 
 //user interface logic
@@ -157,7 +159,7 @@ $(document).ready(function() {
               					 '	<h4 class="price">current price: <span>ksh '+ p1.price + '</span></h4>'+
               '	<div class="action">'+
                 '  <br>'+
-              						'	<button class="add-to-cart scart btn btn-default" id="#'+ p1.pName +'-'+ p1.pID +'" type="button">add to cart</button>'+
+              						'	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p1.pID +'" type="button">add to cart</button>'+
               						'	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
               					'	</div>'+
               			'		</div>'+
@@ -189,7 +191,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p2.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p2.pName +'-'+ p2.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ ''+ p2.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -221,7 +223,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p3.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p3.pName +'-'+ p3.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p3.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -253,7 +255,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p4.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p4.pName +'-'+ p4.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p4.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -284,7 +286,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p5.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p5.pName +'-'+ p5.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ ''+ p5.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -316,7 +318,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p6.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn scart btn-default" id="#'+ p6.pName +'-'+ p6.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ '' + p6.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -348,7 +350,7 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p7.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p7.pName +'-'+ p7.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p7.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -375,12 +377,12 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p8.pName+'</h3>'+
                  '  </div>'+
-                 '<p class="product-code"> Product code: ' + p8.pID + '</p>'+
+                 '<p> Product code: </p> <p class="product-code" id="product-code">' + p8.pID + '</p>'+
                    '<p class="product-description">' + p8.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p8.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart scart btn btn-default" id="#'+ p8.pName +'-'+ p8.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p8.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
@@ -393,13 +395,57 @@ $(document).ready(function() {
 
         //get all the buttons with the class .scart
         let carts = document.querySelectorAll('.scart');
-
-         for (var i=0; i < carts.length; i++) {
-              carts[i].addEventListener('click', () => {
+              carts[0].addEventListener('click', () => {
                 alert("Product added to basket!")
-                cartNumbers();
+              //get the ID of the object and place into the thing
+              var iD= document.getElementsByClassName('scart')[0].id;
+                //console log to verify name of product
+              //console.log(iD);
+
+              //foreach looop function to get the correct ID
+          allshoppinggoods.productID.forEach(function(sproduct) {
+          if(sproduct.prodID==="p1"&& iD===sproduct.prodID)
+              {
+              console.log("it works1");
+              cartNumbers(sp1);
+            }
+            else if(sproduct.prodID==="p2"&& iD===sproduct.prodID)
+                {
+                console.log("it works2");
+                cartNumbers(sp2);
+              }
+              else if(sproduct.prodID==="p3"&& iD===sproduct.prodID)
+                  {
+                  console.log("it works3");
+                  cartNumbers(sp3);
+                }
+                else if(sproduct.prodID==="p4"&& iD===sproduct.prodID)
+                    {
+                    console.log("it works4");
+                    cartNumbers(sp4);
+                  }
+                  else if(sproduct.prodID==="p5"&& iD===sproduct.prodID)
+                      {
+                      console.log("it works5");
+                      cartNumbers(sp5);
+                    }
+                    else if(sproduct.prodID==="p6"&& iD===sproduct.prodID)
+                        {
+                        console.log("it works6");
+                        cartNumbers(sp6);
+                      }
+                      else if(sproduct.prodID==="p7"&& iD===sproduct.prodID)
+                          {
+                          console.log("it works7");
+                          cartNumbers(sp7);
+                        }
+                        else if(sproduct.prodID==="p8"&& iD===sproduct.prodID)
+                            {
+                            console.log("it works8");
+                            cartNumbers(sp8);
+                          }
+            });
               });
-         }
 
       //onload, check if there are any items in the basket
       function onLoadCartNumbers() {
@@ -408,11 +454,11 @@ $(document).ready(function() {
         document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
               }
             }
-      //calls the function to check if stuff is in basket 
+      //calls the function to check if stuff is in basket
         onLoadCartNumbers();
 
          //store data of product in local variable for use later
-         function cartNumbers(){
+         function cartNumbers(product){
            productNumbers  = localStorage.getItem('cartNumbers');
            productNumbers = parseInt(productNumbers);
 
@@ -429,6 +475,16 @@ $(document).ready(function() {
               productNumbers = parseInt(productNumbers);
               document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
             }
+          setItems(product);
+
+         }
+
+         function setItems(product) {
+            console.log("Inside of SETItems");
+            console.log("My product is ", product);
+
+            product.inCart =1;
+            console.log("My product is ", product);
          }
 
 
