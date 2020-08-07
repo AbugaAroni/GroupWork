@@ -1,6 +1,6 @@
 # Simple Online Store / Week 5 Group Work Project
 
-### Author: [Roba Jillo, Ezra Ouko, Abuga Aroni, Saruni Letiwa] (https://github.com/AbugaAroni/)
+### Author(s): [Roba Jillo - (https://github.com/robajillo), Ezra Ouko - (https://github.com/iamOuko), Abuga Aroni - (https://github.com/AbugaAroni/) , Saruni Letiwa - (https://github.com/Letiwa-Saruni-jnr)] 
 
 ### Description
 This is a web application that is a Simple Online Store. It allows you to view some products, add them to a cart, and eventually purchase them.
