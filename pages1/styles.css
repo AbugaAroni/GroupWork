@@ -1,170 +1,182 @@
-    
+
 @import url("https://fonts.googleapis.com/css?family=Metal+Mania");
-@font-face { 
-    font-family: "Booter - Zero Zero"; 
-    src: url("Fonts/Booter - Zero Zero.woff") 
+@font-face {
+    font-family: "Booter - Zero Zero";
+    src: url("Fonts/Booter - Zero Zero.woff")
     format("woff"),
-     url("Fonts/Booter - Zero Zero.woff2") 
-    format("woff2"); 
-    font-weight: normal; 
+     url("Fonts/Booter - Zero Zero.woff2")
+    format("woff2");
+    font-weight: normal;
     font-style: normal;
 }
-      
-    .cart-header { 
-        font-weight: bold; 
-        font-size: 1.25em; 
-        color: #56CCF2; 
-    } 
-    
-    .section-header { 
+
+div {
+  margin: auto;
+}
+
+.cartp {
+  font-size: 20px;
+  text-align: center;
+}
+
+.brdrs {
+  border-bottom: 2px solid black;
+  padding: 6px;
+  margin: 5px;
+  margin-right: 23px;
+  object-fit: cover;
+  text-align: center;
+}
+
+.xyz {
+  border-bottom: grey;
+  border-style: groove;
+}
+
+.pdx {
+  padding-top: 10px;
+}
+
+    .cart-header {
+        font-weight: bold;
+        font-size: 1.25em;
+        color: #56CCF2;
+    }
+
+    .section-header {
         font-family: "Metal Mania";
          font-weight: normal;
           color: #333;
            text-align: center;
             font-size: 2.5em;
 }
-.btn { 
-    text-align: center; 
-     vertical-align: middle; 
-     padding: .67em .67em; 
+.btn {
+    text-align: center;
+     vertical-align: middle;
+     padding: .67em .67em;
      cursor: pointer;
 }
 
 .btn-primary {
-color: white; 
-background-color: #56CCF2;
 border: none;
- border-radius: .3em; 
- font-weight: bold;
- text-align: center; 
-
+ border-radius: .3em;
+ text-align: center;
   }
-  
 
+     .cart-header {
+        font-weight: bold;
+        font-size: 1.25em;
+        color: #333;
+    }
 
-
-       .cart-header { 
-        font-weight: bold; 
-        font-size: 1.25em; 
-        color: #333; 
-    } 
-
-    .cart-column { 
-    display: flex; 
-    align-items: center; 
-    border-bottom: 1px solid black; 
-    margin-right: 1.5em; 
-    padding-bottom: 10px; 
-    margin-top: 10px; 
-} 
-
-.cart-row { 
-    display: flex; 
-} 
-
-.cart-item { 
-    width: 45%; 
-} 
-.cart-price { 
-    width: 20%; 
-    font-size: 1.2em; 
-    color: #333; 
-} 
-.cart-quantity { 
-    width: 35%; 
-} 
-.cart-item-title { 
-    color: #333; 
-    margin-left: .5em; 
-    font-size: 1.2em; 
-} 
-.cart-item-image { 
-    width: 75px; 
-    height: auto; 
-    border-radius: 10px; 
-} 
-.cart-quantity-input { 
-    height: 34px; 
-    width: 50px; 
-    border-radius: 5px; 
-    border: 1px solid #56CCF2; 
-    background-color: #eee; 
-    color: #333; 
-    padding: 0; 
-    text-align: center; 
-    font-size: 1.2em; 
-    margin-right: 25px; 
+    .cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
 }
 
-.cart-total { 
-    text-align: end; 
-    margin-top: 10px; 
-    margin-right: 10px; 
-} 
-.cart-total-title { 
-    font-weight: bold; 
-    font-size: 1.5em; 
-    color: black; 
-    margin-right: 20px; 
-} 
-.cart-total-price { 
-    color: #333; 
-    font-size: 1.1em; 
-} 
-.btn-order { 
-     
-     
-    margin: 200px auto 200px auto ; 
-    font-size: 1.75em; 
-    border-radius: .; 
-} 
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+.cart-quantity {
+    width: 35%;
+}
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+.cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+}
+.cart-quantity-input {
+    height: 34px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+}
+.cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+}
+.btn-order {
+    margin: 200px auto 200px auto ;
+    font-size: 1.75em;
+    border-radius: .;
+}
 .btn-primary {
-    color: white; 
-    background-color: #56CCF2;
+    color: black;
      border: none;
-      border-radius: .; 
+      border-radius: .;
       font-weight: bold;
        }
 
        .btn-danger {
-        margin: 200px auto 200px auto ; 
-        font-size: 1.75em; 
+        margin: 200px auto 200px auto ;
+        font-size: 1.75em;
         border-radius: .;
-        color: white; 
+        color: white;
         background-color: #56CCF2;
          border: none;
-          border-radius: .; 
+          border-radius: .;
           font-weight: bold;
        }
        .buttons {
         width: 960px;
         margin: 0 auto;}
-        
+
             .action_btn {
         width: 350px;
         margin: 0 auto;}
-.main-footer { 
+.main-footer {
     background-color: #56CCF2;
      text-align: center;
 }
-.main-footer { 
+.main-footer {
     background-color: #56CCF2;
      color: white;
       padding: .25em 0; }
 
-.business-name { 
+.business-name {
     text-align: center;
      margin: 0;
-      font-size: 4em; 
+      font-size: 4em;
       font-family: "Booter - Zero Zero";
        font-weight: normal;
-        
+
          }
    h3 {
        text-align: center;
-   }      
-
-    
-    
-    
-    
+   }

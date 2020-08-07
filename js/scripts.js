@@ -1,11 +1,4 @@
 //Business interface logic
-//shopping cart
-function ShoppingCart (productID, name, tprice, numordered) {
-  this.orders = allorders;
-  this.totalprice = tprice;
-  this.totalordered = numordered;
-}
-
 var allorders = {productID: []};
 
 //products and product objects
@@ -18,11 +11,12 @@ function Products (prodname, pid, cost, shortdescription,longdescription,pic,num
   this.description = longdescription;
   this.picture = pic;
   this.quantity = numProducts;
+          }
 
 }
 
 //Product objects
-
+{
 var p1 = new Products("Diamond water", "p1", 200, "Smooth freshening water that cools your thirst.", "Smooth freshening water that cools your thirst. Made from water that is said to have fallen from the heavens","../img/img1.jpg", 10);
 
 var p2 = new Products("Vilsa Water", "p2", 250, "Water from the Vilsa hills...", "From the hills of Vilsa, filtered by the hills and nature itself","../img/img2.jpg", 10);
@@ -44,12 +38,56 @@ var allproducts = {productID: [p1,p2,p3,p4,p5,p6,p7,p8]}
 
 }
 
-//var to capture which product user wants to viewp
-var iWanttoview =window.name;
+//shopping cart
+function ShoppingCart (productID, prodName, tprice, inCart, numordered, img) {
+  this.prodID = productID;
+  this.prodName = prodName;
+  this.price = tprice;
+  this.inCart = inCart;
+  this.totalordered = numordered;
+  this.img = img;
+}
+
+//shopping cart objects
+{
+var sp1 = new ShoppingCart (p1.pID, p1.pName, p1.price, 0, 0, p1.picture);
+
+var sp2 = new ShoppingCart (p2.pID, p2.pName, p2.price, 0, 0, p2.picture);
+
+var sp3 = new ShoppingCart (p3.pID, p3.pName, p3.price, 0, 0, p3.picture);
+
+var sp4 = new ShoppingCart (p4.pID, p4.pName, p4.price, 0, 0, p4.picture);
+
+var sp5 = new ShoppingCart (p5.pID, p5.pName, p5.price, 0, 0, p5.picture);
+
+var sp6 = new ShoppingCart (p6.pID, p6.pName, p6.price, 0, 0, p6.picture);
+
+var sp7 = new ShoppingCart (p7.pID, p7.pName, p7.price, 0, 0, p7.picture);
+
+var sp8 = new ShoppingCart (p8.pID, p8.pName, p8.price, 0, 0, p8.picture);
+
+var allshoppinggoods = {productID: [sp1,sp2,sp3,sp4,sp5,sp6,sp7,sp8]}
+}
 
 //user interface logic
 $(document).ready(function() {
 
+  //buttons to clear cart and save product
+  $("#orderButton").click(function() {
+    localStorage.clear();
+    alert("Order succesfully placed!");
+    location.reload();
+      });
+  $("#cancelButton").click(function() {
+  localStorage.clear();
+  location.reload();
+});
+
+  //loads every time page loads to load the html stuff
+  displayCart();
+
+  //calls the function to check if stuff is in basket
+ onLoadCartNumbers();
 
 //for each loop to display each product
    allproducts.productID.forEach(function(product) {
@@ -63,7 +101,7 @@ $(document).ready(function() {
                          '<p class="card-text">' + product.sdescription + '</p>'+
                      '</div>' +
                      '<div class="card-footer">' +
-                        '<a href="#" id="'+ product.pID +'-btn"  class="btn btn-primary">Select</a>'+
+                        '<a href="#" id="'+ product.pID +'-btn"  class="btn testf btn-primary">Select</a>'+
                      '</div>'+
                  '</div>'+
              '</div>'
@@ -116,7 +154,7 @@ $(document).ready(function() {
                   });
 }
 //will display given product name
-    if(window.name==="p1") {
+   if(window.name==="p1") {
           $("#productsdetails").append(
                   '<h1>' + p1.pName + ' details</h1>' +
               	              '<div class="container">' +
@@ -138,14 +176,14 @@ $(document).ready(function() {
               					 '	<h4 class="price">current price: <span>ksh '+ p1.price + '</span></h4>'+
               '	<div class="action">'+
                 '  <br>'+
-              						'	<button class="add-to-cart btn btn-default" id="#'+ p1.pName +'-'+ p1.pID +'" type="button">add to cart</button>'+
+              						'	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p1.pID +'" type="button">add to cart</button>'+
               						'	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
               					'	</div>'+
               			'		</div>'+
               			'	</div>'+
               		'	</div>'+
               	'	</div>'+
-              '	</div>>'
+              '	</div>'
                 );
               }
         else if(window.name==="p2") {
@@ -170,14 +208,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p2.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p2.pName +'-'+ p2.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ ''+ p2.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p3") {
@@ -202,14 +240,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p3.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p3.pName +'-'+ p3.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p3.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p4") {
@@ -234,14 +272,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p4.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p4.pName +'-'+ p4.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p4.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p5") {
@@ -265,14 +303,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p5.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p5.pName +'-'+ p5.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ ''+ p5.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p6") {
@@ -284,7 +322,7 @@ $(document).ready(function() {
                        '<div class="wrapper row">' +
                        '<div class="preview col-md-6">' +
                                 '<div class="preview-pic tab-content">' +
-                                        '<div class="tab-pane active" id="pic '+ p6.pName +'"><img "alt="Card image '+ p6.pName + '" src="'+ p1.picture + '" /></div>'+
+                                        '<div class="tab-pane active" id="pic '+ p6.pName +'"><img "alt="Card image '+ p6.pName + '" src="'+ p6.picture + '" /></div>'+
                                            ' </div> ' +
                                  '  <ul class="preview-thumbnail nav nav-tabs"> '+
                          '	</ul>'+
@@ -297,14 +335,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p6.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p6.pName +'-'+ p6.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart btn scart btn-default" id="'+ '' + p6.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p7") {
@@ -329,14 +367,14 @@ $(document).ready(function() {
                    '	<h4 class="price">current price: <span>ksh '+ p7.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p7.pName +'-'+ p7.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p7.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
         else if(window.name==="p8") {
@@ -356,20 +394,244 @@ $(document).ready(function() {
                  '	<div class="details col-md-6">'+
                    '	<h3 class="product-title">'+p8.pName+'</h3>'+
                  '  </div>'+
-                 '<p class="product-code"> Product code: ' + p8.pID + '</p>'+
+                 '<p> Product code: </p> <p class="product-code" id="product-code">' + p8.pID + '</p>'+
                    '<p class="product-description">' + p8.description + '</p>'+
                    '	<h4 class="price">current price: <span>ksh '+ p8.price + '</span></h4>'+
         '	<div class="action">'+
           '  <br>'+
-                    '	<button class="add-to-cart btn btn-default" id="#'+ p8.pName +'-'+ p8.pID +'" type="button">add to cart</button>'+
+                    '	<button class="add-to-cart scart btn btn-default" id="'+ ''+ p8.pID +'" type="button">add to cart</button>'+
                     '	<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>'+
                   '	</div>'+
               '		</div>'+
               '	</div>'+
             '	</div>'+
           '	</div>'+
-        '	</div>>'
+        '	</div>'
                 );
         }
 
-});
+        //get all the buttons with the class .scart
+        let carts = document.querySelectorAll('.scart');
+              carts[0].addEventListener('click', () => {
+                alert("Product added to basket!")
+
+        //get the ID of the object and place into the thing
+              var iD= document.getElementsByClassName('scart')[0].id;
+
+              //foreach looop function to get the correct ID
+          allshoppinggoods.productID.forEach(function(sproduct) {
+          if(sproduct.prodID==="p1"&& iD===sproduct.prodID)
+              {
+              cartNumbers(sp1);
+              totalCost(sp1);
+            }
+            else if(sproduct.prodID==="p2"&& iD===sproduct.prodID)
+                {
+                cartNumbers(sp2);
+                totalCost(sp2);
+              }
+              else if(sproduct.prodID==="p3"&& iD===sproduct.prodID)
+                  {
+                  cartNumbers(sp3);
+                  totalCost(sp3);
+                }
+                else if(sproduct.prodID==="p4"&& iD===sproduct.prodID)
+                    {
+                    cartNumbers(sp4);
+                    totalCost(sp4);
+                  }
+                  else if(sproduct.prodID==="p5"&& iD===sproduct.prodID)
+                      {
+                      cartNumbers(sp5);
+                      totalCost(sp5);
+                    }
+                    else if(sproduct.prodID==="p6"&& iD===sproduct.prodID)
+                        {
+                        cartNumbers(sp6);
+                        totalCost(sp6);
+                      }
+                      else if(sproduct.prodID==="p7"&& iD===sproduct.prodID)
+                          {
+                          cartNumbers(sp7);
+                          totalCost(sp7);
+                        }
+                        else if(sproduct.prodID==="p8"&& iD===sproduct.prodID)
+                            {
+                            cartNumbers(sp8);
+                            totalCost(sp8);
+                          }
+            });
+              });
+
+
+
+      //onload, check if there are any items in the basket
+      function onLoadCartNumbers() {
+        let productNumbers = localStorage.getItem('cartNumbers');
+        if(productNumbers) {
+        document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
+              }
+            }
+
+
+//store data of product in local variable for use later
+         function cartNumbers(product){
+           productNumbers  = localStorage.getItem('cartNumbers');
+           productNumbers = parseInt(productNumbers);
+
+           if (productNumbers>=1) {
+              localStorage.setItem('cartNumbers', productNumbers + 1);
+              productNumbers  = localStorage.getItem('cartNumbers');
+              productNumbers = parseInt(productNumbers);
+              document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
+            }
+            else {
+              localStorage.setItem('cartNumbers', 1);
+
+              productNumbers  = localStorage.getItem('cartNumbers');
+              productNumbers = parseInt(productNumbers);
+              document.querySelector('.shoppingc').textContent = "Shopping cart " + productNumbers + " item(s)";
+            }
+        setItems(product);
+
+      }
+
+
+    //code to set items into the cart using localStorage
+         function setItems(product) {
+
+          let cartItems = localStorage.getItem('productsInCart');
+          cartItems = JSON.parse(cartItems);
+
+          if(cartItems != null ) {
+
+            if(cartItems[product.prodName] == undefined){
+              cartItems = {
+                ...cartItems,
+                [product.prodName]: product
+              }
+            }
+
+              cartItems[product.prodName].inCart += 1;
+            }
+             else {
+              product.inCart =1;
+              cartItems = {
+                [product.prodName]: product
+              }
+            }
+            localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+         }
+
+    //code to find the total cost of the items using localStorage
+         function totalCost(product) {
+          let cartCost = localStorage.getItem('totalCost');
+          console.log("My cart cost is", cartCost);
+          console.log(typeof cartCost);
+
+          if(cartCost!= null) {
+            cartCost = parseInt(cartCost);
+            localStorage.setItem("totalCost", cartCost + product.price);
+          }
+          else {
+            localStorage.setItem("totalCost", product.price);
+          }
+          }
+
+      //code to display the cart
+          function displayCart() {
+            let cartItems = localStorage.getItem("productsInCart");
+            cartItems = JSON.parse(cartItems);
+          let productContainer = document.querySelector(".products");
+          let cartCost = localStorage.getItem('totalCost');
+
+            if(cartItems && productContainer) {
+              productContainer.innerHTML ='';
+            Object.values(cartItems).map(item => {
+              productContainer.innerHTML +=`
+            <div class="row cartp">
+                <div class="product-id brdrs col-md-2">
+                   <span> ${item.prodID}</span>
+                </div>
+                <div class="product brdrs col-md-2">
+                   <span> ${item.prodName}  </span>
+                   <ion-icon name="close-circle-outline"></ion-icon>
+                </div>
+                <div class="price brdrs col-md-2">
+                  ${item.price}<span>.00 KSH </span>
+                </div>
+                <div class="quanitity brdrs col-md-2">
+                  <ion-icon class="decrease"  name="arrow-back-outline"></ion-icon>
+                  <span>${item.inCart}</span>
+                  <ion-icon class="increase" name="arrow-forward-outline"></ion-icon>
+                  </div>
+                <div class="total brdrs col-md-2">
+
+                ${item.inCart * item.price}
+
+                  </div>
+              </div>
+              `;
+            });
+
+            productContainer.innerHTML += `
+            <div class="row pdx cartp">
+              <div class="basketTotalContainer col-md-6">
+                <h3 class="basketTotalTitle">
+                </h3>
+              </div>
+              <div = class="xyz col-md-6">
+              <h3>  Basket Total:
+                  ${cartCost}.KSH
+                </h3>
+              </div>
+            </div>
+            `
+            manageQuantity();
+                }
+
+      }
+
+    //code to manage quantity
+    function manageQuantity() {
+    let decreaseButtons = document.querySelectorAll('.decrease');
+    let increaseButtons = document.querySelectorAll('.increase');
+    let currentQuantity = 0;
+    let currentProduct = '';
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i < increaseButtons.length; i++) {
+        decreaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentProduct);
+
+            if( cartItems[currentProduct].inCart > 1 ) {
+                cartItems[currentProduct].inCart -= 1;
+                cartNumbers(cartItems[currentProduct], "decrease");
+                totalCost(cartItems[currentProduct], "decrease");
+                localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+                displayCart();
+            }
+        });
+
+        increaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentProduct);
+
+            cartItems[currentProduct].inCart += 1;
+            cartNumbers(cartItems[currentProduct]);
+            totalCost(cartItems[currentProduct]);
+            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            displayCart();
+        });
+    }
+}
+
+      });
