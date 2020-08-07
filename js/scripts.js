@@ -71,13 +71,23 @@ var allshoppinggoods = {productID: [sp1,sp2,sp3,sp4,sp5,sp6,sp7,sp8]}
 
 //user interface logic
 $(document).ready(function() {
+
+  //buttons to clear cart and save product
+  $("#orderButton").click(function() {
+    localStorage.clear();
+    alert("Order succesfully placed!");
+    location.reload();
+      });
+  $("#cancelButton").click(function() {
+  localStorage.clear();
+  location.reload();
+});
+
   //loads every time page loads to load the html stuff
   displayCart();
 
   //calls the function to check if stuff is in basket
-    onLoadCartNumbers();
-
-
+ onLoadCartNumbers();
 
 //for each loop to display each product
    allproducts.productID.forEach(function(product) {
@@ -464,7 +474,7 @@ $(document).ready(function() {
             }
 
 
-         //store data of product in local variable for use later
+//store data of product in local variable for use later
          function cartNumbers(product){
            productNumbers  = localStorage.getItem('cartNumbers');
            productNumbers = parseInt(productNumbers);
@@ -484,7 +494,8 @@ $(document).ready(function() {
             }
         setItems(product);
 
-         }
+      }
+
 
     //code to set items into the cart using localStorage
          function setItems(product) {
@@ -550,9 +561,9 @@ $(document).ready(function() {
                   ${item.price}<span>.00 KSH </span>
                 </div>
                 <div class="quanitity brdrs col-md-2">
-                  <ion-icon name="arrow-back-outline"></ion-icon>
+                  <ion-icon class="decrease"  name="arrow-back-outline"></ion-icon>
                   <span>${item.inCart}</span>
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                  <ion-icon class="increase" name="arrow-forward-outline"></ion-icon>
                   </div>
                 <div class="total brdrs col-md-2">
 
@@ -575,9 +586,52 @@ $(document).ready(function() {
                 </h3>
               </div>
             </div>
-            `;
+            `
+            manageQuantity();
                 }
 
       }
+
+    //code to manage quantity
+    function manageQuantity() {
+    let decreaseButtons = document.querySelectorAll('.decrease');
+    let increaseButtons = document.querySelectorAll('.increase');
+    let currentQuantity = 0;
+    let currentProduct = '';
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    for(let i=0; i < increaseButtons.length; i++) {
+        decreaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = decreaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentProduct = decreaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentProduct);
+
+            if( cartItems[currentProduct].inCart > 1 ) {
+                cartItems[currentProduct].inCart -= 1;
+                cartNumbers(cartItems[currentProduct], "decrease");
+                totalCost(cartItems[currentProduct], "decrease");
+                localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+                displayCart();
+            }
+        });
+
+        increaseButtons[i].addEventListener('click', () => {
+            console.log(cartItems);
+            currentQuantity = increaseButtons[i].parentElement.querySelector('span').textContent;
+            console.log(currentQuantity);
+            currentProduct = increaseButtons[i].parentElement.previousElementSibling.previousElementSibling.querySelector('span').textContent.toLocaleLowerCase().replace(/ /g,'').trim();
+            console.log(currentProduct);
+
+            cartItems[currentProduct].inCart += 1;
+            cartNumbers(cartItems[currentProduct]);
+            totalCost(cartItems[currentProduct]);
+            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            displayCart();
+        });
+    }
+}
 
       });
